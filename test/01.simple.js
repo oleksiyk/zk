@@ -4,7 +4,7 @@
 
 var Zookeeper = require('../index')
 
-describe('get/set API', function() {
+describe('Simple', function() {
 
     var zk, path;
 
@@ -56,6 +56,13 @@ describe('get/set API', function() {
             reply.should.have.property('stat').that.is.an('object')
             reply.should.have.property('data')
             reply.data.toString().should.be.eql('value2')
+        })
+    })
+
+    it('#exists()', function() {
+        return zk.exists(path).then(function(reply) {
+            reply.should.be.an('object')
+            reply.should.have.property('stat').that.is.an('object')
         })
     })
 
