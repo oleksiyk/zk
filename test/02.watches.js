@@ -35,6 +35,7 @@ describe('Watches', function() {
             return reply.watch.then(function(event) {
                 event.type.should.be.a('string').and.eql('changed')
                 event.path.should.be.eql(path)
+                event.state.should.be.a('string').and.eql('connected')
             })
         })
     })
@@ -48,6 +49,7 @@ describe('Watches', function() {
             return reply.watch.then(function(event) {
                 event.type.should.be.a('string').and.eql('changed')
                 event.path.should.be.eql(path)
+                event.state.should.be.a('string').and.eql('connected')
             })
         })
     })
