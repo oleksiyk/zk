@@ -33,7 +33,20 @@ describe('Watches', function() {
             zk.set(path, 'some value', -1)
 
             return reply.watch.then(function(event) {
-                event.event.should.be.a('string').and.eql('changed')
+                event.type.should.be.a('string').and.eql('changed')
+                event.path.should.be.eql(path)
+            })
+        })
+    })
+
+    it('#exists() with watch', function() {
+        return zk.exists(path, true).then(function(reply) {
+            Promise.is(reply.watch).should.be.eql(true)
+
+            zk.set(path, 'some value', -1)
+
+            return reply.watch.then(function(event) {
+                event.type.should.be.a('string').and.eql('changed')
                 event.path.should.be.eql(path)
             })
         })
