@@ -1,0 +1,35 @@
+{
+    "name": "zookeeper-promised",
+    "description": "Promised wrapper over zookeeper",
+    "homepage": "http://github.com/oleksiyk/zookeeper-promised",
+    "author": {
+        "name": "Oleksiy Krivoshey",
+        "email": "oleksiyk@gmail.com"
+    },
+    "version": "0.0.1",
+    "main": "./index.js",
+    "dependencies": {
+        "zookeeper": "~=3.4.5",
+        "bluebird": "~=1.0.*",
+        "lodash": "~=2.4.1"
+    },
+    "devDependencies": {
+        "chai": "~=1.8.1",
+        "sinon-chai": "~=2.4.0",
+        "chai-as-promised": "~=4.1.0",
+        "mocha-as-promised": "~=2.0.0"
+    },
+    "bugs": {
+        "url": "https://github.com/oleksiyk/zookeeper-promised/issues"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/oleksiyk/zookeeper-promised.git"
+    },
+    "readme": "Promised wrapper over zookeeper",
+    "readmeFilename": "README.md",
+    "license": "MIT"
+}
