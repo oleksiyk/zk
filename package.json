@@ -23,7 +23,7 @@
         "url": "https://github.com/oleksiyk/zookeeper-promised/issues"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "make test"
     },
     "repository": {
         "type": "git",
