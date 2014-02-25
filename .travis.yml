@@ -4,4 +4,3 @@ node_js:
 
 before_install:
   - "sudo apt-get install zookeeperd"
-  - "sudo service zookeeper start"
