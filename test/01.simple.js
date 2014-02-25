@@ -3,6 +3,7 @@
 /* global describe, it, before, after */
 
 var Zookeeper = require('../index')
+var ZkError = Zookeeper.Error
 
 describe('Simple', function() {
 
@@ -63,6 +64,25 @@ describe('Simple', function() {
         return zk.exists(path).then(function(reply) {
             reply.should.be.an('object')
             reply.should.have.property('stat').that.is.an('object')
+        })
+    })
+
+    describe('errors', function() {
+        it('#get()', function() {
+            return zk.get('/abracadabra')
+            .then(function() {
+                throw new Error('should be rejected')
+            })
+            .catch(function(err) {
+                err.should.be.instanceOf(ZkError)
+                err.code.should.be.eql(ZkError.ZNONODE)
+            })
+        })
+
+        it('#exists()', function() {
+            return zk.exists('/abracadabra').then(function(reply) {
+                reply.should.have.property('stat').that.is.eql(null)
+            })
         })
     })
 
