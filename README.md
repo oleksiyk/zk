@@ -1,5 +1,7 @@
 # Zookeeper-promised
 
+[![Build Status](https://travis-ci.org/oleksiyk/zookeeper-promised.png)](https://travis-ci.org/oleksiyk/zookeeper-promised)
+
 Zookeeper-promised is a [promised](https://github.com/petkaantonov/bluebird) based client library for Node.
 It uses the same C binding from [node-zookeeper](https://github.com/yfinkelstein/node-zookeeper) but makes it easier to use.
 
