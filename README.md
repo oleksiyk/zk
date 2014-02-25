@@ -14,6 +14,18 @@ The following methods are implemented:
 * `getChildren`
 * `getChildren2`
 
+### Connection
+
+```javascript
+var Zookeeper = require('zookeeper-promised')
+var zk = new Zookeeper()
+
+zk.connect().then(function() {
+    // zk.create(), zk.set()...
+})
+```
+
+### Watches
 Watches are implemented as promises conditionaly returned with results:
 
 `get` without watch:
@@ -40,6 +52,28 @@ return zk.get(path, true).then(function(reply) {
 ```
 
 See tests for more
+
+### Locks
+
+```javascript
+var Zookeeper = require('zookeeper-promised')
+var Lock = Zookeeper.Lock
+var zk = new Zookeeper()
+
+// zk.connect() ...
+
+var lock = new Lock(zk, 'lockName')
+
+lock.lock()
+    .then(function(){
+        // we got the lock!
+        // ... do something
+    })
+    .then(function(){
+        // unlock
+        return lock.unlock()
+    })
+```
 
 # License (MIT)
 
