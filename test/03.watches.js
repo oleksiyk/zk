@@ -54,48 +54,33 @@ describe('Watches', function() {
         })
     })
 
-    describe('#children', function() {
-        var child1, child2
 
-        before(function() {
-            return Promise.all([
-                zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL).then(function(_path) {
-                    child1 = _path
-                }),
-                zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL).then(function(_path) {
-                    child2 = _path
-                })
-            ])
-        })
+    it('#getChildren() with watch', function() {
+        return zk.getChildren(path, true).then(function(reply) {
+            Promise.is(reply.watch).should.be.eql(true)
 
-        it('#getChildren() with watch', function() {
-            return zk.getChildren(path, true).then(function(reply) {
-                Promise.is(reply.watch).should.be.eql(true)
+            zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL)
 
-                zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL)
-
-                return reply.watch.then(function(event) {
-                    event.type.should.be.a('string').and.eql('child')
-                    event.path.should.be.eql(path)
-                    event.state.should.be.a('string').and.eql('connected')
-                })
+            return reply.watch.then(function(event) {
+                event.type.should.be.a('string').and.eql('child')
+                event.path.should.be.eql(path)
+                event.state.should.be.a('string').and.eql('connected')
             })
         })
+    })
 
-        it('#getChildren2() with watch', function() {
-            return zk.getChildren2(path, true).then(function(reply) {
-                Promise.is(reply.watch).should.be.eql(true)
+    it('#getChildren2() with watch', function() {
+        return zk.getChildren2(path, true).then(function(reply) {
+            Promise.is(reply.watch).should.be.eql(true)
 
-                zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL)
+            zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL)
 
-                return reply.watch.then(function(event) {
-                    event.type.should.be.a('string').and.eql('child')
-                    event.path.should.be.eql(path)
-                    event.state.should.be.a('string').and.eql('connected')
-                })
+            return reply.watch.then(function(event) {
+                event.type.should.be.a('string').and.eql('child')
+                event.path.should.be.eql(path)
+                event.state.should.be.a('string').and.eql('connected')
             })
         })
-
     })
 
 })

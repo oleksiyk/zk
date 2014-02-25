@@ -1,5 +1,43 @@
-- Uses native C binding directly
-- Returns promises for both results and watches
+# Zookeeper-promised
+
+Zookeeper-promised is a [promised](https://github.com/petkaantonov/bluebird) based client library for Node.
+It uses the same C binding from [node-zookeeper](https://github.com/yfinkelstein/node-zookeeper) but makes it easier to use.
+
+The following methods are implemented:
+
+* `get`
+* `set`
+* `create`
+* `exists`
+* `getChildren`
+* `getChildren2`
+
+Watches are implemented as promises conditionaly returned with results:
+
+`get` without watch:
+
+```javascript
+zk.get(path).then(function(reply) {
+    // reply.stat is node stats
+    // reply.data is node value (buffer)
+})
+```
+
+`get` with watch:
+
+```javascript
+return zk.get(path, true).then(function(reply) {
+    // reply.stat, reply.data as above
+    // reply.watch is a promise
+    return reply.watch.then(function(event){
+        // event.type: 'child' | 'changed' | 'deleted' ..
+        // event.state
+        // event.path
+    })
+})
+```
+
+See tests for more
 
 # License (MIT)
 
