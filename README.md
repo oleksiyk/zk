@@ -1,3 +1,6 @@
+- Uses native C binding directly
+- Returns promises for both results and watches
+
 # License (MIT)
 
 Copyright (c) 2014
