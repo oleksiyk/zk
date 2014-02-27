@@ -11,6 +11,7 @@ The following methods are implemented:
 * `set`
 * `create`
 * `exists`
+* `delete`
 * `getChildren`
 * `getChildren2`
 
