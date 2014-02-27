@@ -66,7 +66,7 @@ var zk = new Zookeeper()
 var lock = new Lock(zk, 'lockName')
 
 lock.lock()
-    .then(function(){
+    .then(function(prev){
         // we got the lock!
         // ... do something
     })
@@ -75,6 +75,10 @@ lock.lock()
         return lock.unlock()
     })
 ```
+
+The `prev` variable returned after `lock()` will indicate if previous lock holder existed normally:
+* if `prev` is `undefined` then either there were no previous lock holder or previous lock holder exited abnormally (without calling `unlock()`)
+* if `prev` is `true` then previous lock holder has successfully called `unlock()`
 
 # License (MIT)
 
