@@ -65,16 +65,13 @@ var zk = new Zookeeper()
 
 var lock = new Lock(zk, 'lockName')
 
-lock.lock()
-    .then(function(){
-        // we got the lock!
-        // ... do something
-    })
-    .then(function(){
-        // unlock
-        return lock.unlock()
-    })
+var promise = lock.lock(function(){
+    // we got the lock!
+    // ... do something and return a promise
+})
 ```
+
+Function passed to `lock()` should return a promise. That promise will be the return value of `lock()` call
 
 # License (MIT)
 
