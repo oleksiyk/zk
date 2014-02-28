@@ -73,6 +73,23 @@ var promise = lock.lock(function(){
 
 Function passed to `lock()` should return a promise. That promise will be the return value of `lock()` call
 
+Locks may optionally pass the resulting value of last sucessfull lock function invocation to the next lock owner:
+
+```javascript
+var lock1 = new Lock(zk, 'lockName')
+var lock2 = new Lock(zk, 'lockName', {returnValue: true})
+
+lock1.lock(function(){
+    return 'hello!'
+})
+
+lock2.lock(function(prevValue){
+    console.log(prevValue.toString()) // outputs 'hello!'
+})
+```
+
+NOTE: The return value must be a string or a buffer. `prevValue` is always a Buffer
+
 # License (MIT)
 
 Copyright (c) 2014
