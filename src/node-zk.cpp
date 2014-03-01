@@ -209,9 +209,6 @@ public:
         int rc = zookeeper_interest(zhandle, &fd, &interest, &tv);
         if (rc) {
             LOG_ERROR(("yield:zookeeper_interest returned error: %d - %s\n", rc, zerror(rc)));
-            if(rc == ZINVALIDSTATE){
-                realClose(rc);
-            }
             return;
         }
 
@@ -256,9 +253,6 @@ public:
         int rc = zookeeper_process (zk->zhandle, events);
         if (rc != ZOK) {
             LOG_ERROR(("yield:zookeeper_process returned error: %d - %s\n", rc, zerror(rc)));
-            if(rc == ZINVALIDSTATE || rc == ZSESSIONEXPIRED){
-                return zk->realClose(rc);
-            }
         }
         zk->yield();
     }
