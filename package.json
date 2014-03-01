@@ -9,7 +9,6 @@
     "version": "0.0.1",
     "main": "./index.js",
     "dependencies": {
-        "zookeeper": "~=3.4.5",
         "bluebird": "~=1.0.*",
         "lodash": "~=2.4.1"
     },
@@ -23,8 +22,11 @@
         "url": "https://github.com/oleksiyk/zookeeper-promised/issues"
     },
     "scripts": {
-        "test": "make test"
+        "test": "make test",
+        "build": "node-gyp configure build",
+        "install": "node-gyp rebuild"
     },
+    "gypfile": true,
     "repository": {
         "type": "git",
         "url": "git://github.com/oleksiyk/zookeeper-promised.git"
