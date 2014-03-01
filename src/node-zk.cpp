@@ -318,11 +318,11 @@ public:
         v8::Local<v8::Value> v8v_client_password = arg->Get(String::NewSymbol("client_password"));
         bool id_and_password_defined = (!v8v_client_id->IsUndefined() && !v8v_client_password->IsUndefined());
         bool id_and_password_undefined = (v8v_client_id->IsUndefined() && v8v_client_password->IsUndefined());
-        THROW_IF_NOT ((id_and_password_defined || id_and_password_undefined), 
+        THROW_IF_NOT ((id_and_password_defined || id_and_password_undefined),
             "ZK init: client id and password must either be both specified or unspecified");
         if (id_and_password_defined) {
           String::AsciiValue password_check(v8v_client_password->ToString());
-          THROW_IF_NOT (password_check.length() == 2 * ZOOKEEPER_PASSWORD_BYTE_COUNT, 
+          THROW_IF_NOT (password_check.length() == 2 * ZOOKEEPER_PASSWORD_BYTE_COUNT,
               "ZK init: password does not have correct length");
           HexStringToPassword(v8v_client_password, local_client.passwd);
           StringToId(v8v_client_id, &local_client.client_id);
@@ -434,7 +434,7 @@ public:
         Local<Value> emit_v = handle_->Get(String::NewSymbol("emit"));
         assert(emit_v->IsFunction());
         Local<Function> emit_fn = emit_v.As<Function>();
-        
+
 
         TryCatch tc;
         emit_fn->Call(handle_, 3, argv);
@@ -614,7 +614,7 @@ public:
 
     static Handle<Value> Delete (const Arguments& args) {
 	  HandleScope scope;
-	  ZooKeeper *zk = ObjectWrap::Unwrap<ZooKeeper>(args.This());	
+	  ZooKeeper *zk = ObjectWrap::Unwrap<ZooKeeper>(args.This());
 	  assert(zk);
 	  String::Utf8Value _path (args[0]->ToString());
 	  uint32_t version = args[1]->ToUint32()->Uint32Value();
@@ -792,7 +792,7 @@ public:
     }
 
 
-    ZooKeeper () : zhandle(0), clientIdFile(0), fd(-1) {
+    ZooKeeper () : zhandle(0), /*clientIdFile(0),*/ fd(-1) {
         ZERO_MEM (myid);
         ZERO_MEM (zk_io);
         ZERO_MEM (zk_timer);
@@ -801,7 +801,7 @@ public:
 private:
     zhandle_t *zhandle;
     clientid_t myid;
-    const char *clientIdFile;
+    // const char *clientIdFile;
     uv_poll_t zk_io;
     uv_timer_t zk_timer;
     int fd;
