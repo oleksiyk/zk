@@ -26,6 +26,22 @@ zk.connect().then(function() {
 })
 ```
 
+### Basics
+```javascript
+zk.create('/test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL).then(function(_path) {
+    // _path is created node path
+})
+```
+
+```javascript
+return zk.set(path, 'value2', -1).then(function(){
+    zk.get(path).then(function(reply){
+        // reply.stat is node stat object
+        // reply.data is node value (Buffer) -> reply.data.toString() will be 'value2'
+    })
+})
+```
+
 ### Watches
 Watches are implemented as promises conditionaly returned with results:
 
