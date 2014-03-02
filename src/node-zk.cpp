@@ -228,11 +228,10 @@ public:
                    events & UV_WRITABLE ? "true" : "false",
                    delay));
 
-        if (uv_is_active ((uv_handle_t*) &zk_io)) {
-          uv_poll_stop(&zk_io);
+        if (!uv_is_active ((uv_handle_t*) &zk_io)) {
+            uv_poll_init(uv_default_loop(), &zk_io, fd);
         }
 
-        uv_poll_init(uv_default_loop(), &zk_io, fd);
         uv_poll_start(&zk_io, events, &zk_io_cb);
 
         uv_timer_start(&zk_timer, &zk_timer_cb, delay, 0);
