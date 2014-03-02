@@ -1,11 +1,12 @@
 {
     "name": "zookeeper-promised",
-    "description": "Promised wrapper over zookeeper",
+    "description": "Zookeeper client library for Node",
     "homepage": "http://github.com/oleksiyk/zookeeper-promised",
     "author": {
         "name": "Oleksiy Krivoshey",
         "email": "oleksiyk@gmail.com"
     },
+    "keywords": ["zookeeper", "client"],
     "version": "0.0.1",
     "main": "./index.js",
     "dependencies": {
@@ -31,7 +32,7 @@
         "type": "git",
         "url": "git://github.com/oleksiyk/zookeeper-promised.git"
     },
-    "readme": "Promised wrapper over zookeeper",
+    "readme": "Zookeeper client library for Node",
     "readmeFilename": "README.md",
     "license": "MIT"
 }
