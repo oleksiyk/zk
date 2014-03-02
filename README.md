@@ -15,6 +15,11 @@ The following methods are implemented:
 * `getChildren`
 * `getChildren2`
 
+### Install
+```
+$ npm install zookeeper-promised
+```
+
 ### Connection
 
 ```javascript
