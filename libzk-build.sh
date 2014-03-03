@@ -28,7 +28,10 @@ if [ "$PLATFORM" != "SunOS" ]; then
     cd $BUILD_TMP
 
     tar -zxf $ZK_FILE && \
-    cd $ZK/src/c && \
+    cd $BUILD_TMP/$ZK && \
+    patch -p0 < $ROOT/src/patches/ZOOKEEPER-642.patch && \
+    patch -p0 < $ROOT/src/patches/ZOOKEEPER-1756-br34.patch && \
+    cd $BUILD_TMP/$ZK/src/c && \
     ./configure \
 	--without-syncapi \
 	--enable-static \
