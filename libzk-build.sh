@@ -1,11 +1,11 @@
 #!/bin/bash
 
-ROOT=`pwd`
+ROOT=$(cd `dirname $0` && pwd)
 BUILD=$ROOT/build/zk
 BUILD_TMP=$BUILD/tmp
 PLATFORM=`uname`
 ZK=zookeeper-3.4.5
-ZK_FILE=/$ROOT/src/_tmp/$ZK.tar.gz
+ZK_FILE=$ROOT/src/_tmp/$ZK.tar.gz
 ZK_URL=http://apache.mirrors.tds.net/zookeeper/$ZK/$ZK.tar.gz
 
 if [ "$PLATFORM" != "SunOS" ]; then
@@ -17,7 +17,7 @@ if [ "$PLATFORM" != "SunOS" ]; then
     mkdir -p $BUILD_TMP
     mkdir -p $(dirname $ZK_FILE)
     if [ ! -e "$ZK_FILE" ] ; then
-    	echo "Downloading $ZK from $ZK_URL"
+    	echo "Downloading $ZK from $ZK_URL to $ZK_FILE"
     	curl --silent --output $ZK_FILE $ZK_URL || wget $ZK_URL -O $ZK_FILE
     	if [ $? != 0 ] ; then
     	    echo "Unable to download zookeeper library"
