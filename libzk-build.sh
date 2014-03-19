@@ -4,7 +4,7 @@ ROOT=$(cd `dirname $0` && pwd)
 BUILD=$ROOT/build/zk
 BUILD_TMP=$BUILD/tmp
 PLATFORM=`uname`
-ZK=zookeeper-3.4.5
+ZK=zookeeper-3.4.6
 ZK_FILE=$ROOT/src/_tmp/$ZK.tar.gz
 ZK_URL=http://apache.mirrors.tds.net/zookeeper/$ZK/$ZK.tar.gz
 
@@ -30,7 +30,6 @@ if [ "$PLATFORM" != "SunOS" ]; then
     tar -zxf $ZK_FILE && \
     cd $BUILD_TMP/$ZK && \
     patch -p0 < $ROOT/src/patches/ZOOKEEPER-642.patch && \
-    patch -p0 < $ROOT/src/patches/ZOOKEEPER-1756-br34.patch && \
     cd $BUILD_TMP/$ZK/src/c && \
     ./configure \
 	--without-syncapi \
@@ -51,7 +50,7 @@ else
     	pkgin list | grep zookeeper-client-3.4.5
     	if [ $? != 0] ; then
     	    echo "You must install zookeeper before installing this module. Try:"
-    	    echo "pkgin install zookeeper-client-3.4.5"
+    	    echo "pkgin install zookeeper-client-3.4.6"
     	    exit 1
     	fi
     fi
