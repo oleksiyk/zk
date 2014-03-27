@@ -1,8 +1,8 @@
-# Zookeeper-promised
+# Zk
 
-[![Build Status](https://travis-ci.org/oleksiyk/zookeeper-promised.png)](https://travis-ci.org/oleksiyk/zookeeper-promised)
+[![Build Status](https://travis-ci.org/oleksiyk/zk.png)](https://travis-ci.org/oleksiyk/zk)
 
-Zookeeper-promised is a [promised](https://github.com/petkaantonov/bluebird) based [Zookeeper](http://zookeeper.apache.org) client library for Node.
+Zk is a [promised](https://github.com/petkaantonov/bluebird) based [Zookeeper](http://zookeeper.apache.org) client library for Node.
 It uses the fork of C binding from [node-zookeeper](https://github.com/yfinkelstein/node-zookeeper) and makes it easier to use.
 
 The following methods are implemented:
@@ -17,13 +17,13 @@ The following methods are implemented:
 
 ### Install
 ```
-$ npm install zookeeper-promised
+$ npm install zk
 ```
 
 ### Connection
 
 ```javascript
-var Zookeeper = require('zookeeper-promised')
+var Zookeeper = require('zk')
 var zk = new Zookeeper()
 
 zk.connect().then(function() {
@@ -78,7 +78,7 @@ See tests for more
 ### Locks
 
 ```javascript
-var Zookeeper = require('zookeeper-promised')
+var Zookeeper = require('zk')
 var Lock = Zookeeper.Lock
 var zk = new Zookeeper()
 
