@@ -1,26 +1,26 @@
 {
-    "name": "zookeeper-promised",
+    "name": "zk",
     "description": "Zookeeper client library for Node",
-    "homepage": "http://github.com/oleksiyk/zookeeper-promised",
+    "homepage": "http://github.com/oleksiyk/zk",
     "author": {
         "name": "Oleksiy Krivoshey",
         "email": "oleksiyk@gmail.com"
     },
     "keywords": ["zookeeper", "client"],
-    "version": "0.0.3",
+    "version": "0.0.4",
     "main": "./index.js",
     "dependencies": {
         "bluebird": "~=1.0.*",
         "lodash": "~=2.4.1"
     },
     "devDependencies": {
-        "chai": "~=1.8.1",
-        "sinon-chai": "~=2.4.0",
-        "chai-as-promised": "~=4.1.0",
-        "mocha-as-promised": "~=2.0.0"
+        "chai": "~=1.9.1",
+        "sinon-chai": "~=2.5.0",
+        "chai-as-promised": "~=4.1.1",
+        "mocha": "~=1.18.2"
     },
     "bugs": {
-        "url": "https://github.com/oleksiyk/zookeeper-promised/issues"
+        "url": "https://github.com/oleksiyk/zk/issues"
     },
     "scripts": {
         "test": "make test",
@@ -30,7 +30,7 @@
     "gypfile": true,
     "repository": {
         "type": "git",
-        "url": "git://github.com/oleksiyk/zookeeper-promised.git"
+        "url": "git://github.com/oleksiyk/zk.git"
     },
     "readme": "Zookeeper client library for Node",
     "readmeFilename": "README.md",
