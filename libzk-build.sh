@@ -30,7 +30,7 @@ if [ "$PLATFORM" != "SunOS" ]; then
     tar -zxf $ZK_FILE && \
     cd $BUILD_TMP/$ZK && \
     patch -p0 < $ROOT/src/patches/ZOOKEEPER-642.patch && \
-    if [ `uname` = "Darwin" ] && [[ `sw_vers -productVersion` =~ 10\.10 ]]; then patch -p0 < $ROOT/src/patches/ZOOKEEPER-2049.patch; fi && \
+    if [ `uname` = "Darwin" ] && [[ `sw_vers -productVersion` =~ 10\.1 ]]; then patch -p0 < $ROOT/src/patches/ZOOKEEPER-2049.patch; fi && \
     cd $BUILD_TMP/$ZK/src/c && \
     ./configure \
 	--without-syncapi \
