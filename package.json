@@ -7,7 +7,7 @@
         "email": "oleksiyk@gmail.com"
     },
     "keywords": ["zookeeper", "client"],
-    "version": "0.0.8",
+    "version": "0.0.9",
     "main": "./index.js",
     "dependencies": {
         "bluebird": "~=1.2.x",
@@ -32,7 +32,6 @@
         "type": "git",
         "url": "git://github.com/oleksiyk/zk.git"
     },
-    "readme": "Zookeeper client library for Node",
     "readmeFilename": "README.md",
     "license": "MIT"
 }
