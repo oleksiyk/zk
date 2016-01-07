@@ -7,7 +7,7 @@
         "email": "oleksiyk@gmail.com"
     },
     "keywords": ["zookeeper", "client"],
-    "version": "0.0.9",
+    "version": "1.0.0",
     "main": "./index.js",
     "dependencies": {
         "bluebird": "~=3.x.x",
