@@ -11,7 +11,8 @@
     "main": "./index.js",
     "dependencies": {
         "bluebird": "~=1.2.x",
-        "lodash": "~=2.4.1"
+        "lodash": "~=2.4.1",
+        "zookeeper": "~=3.4.7"
     },
     "devDependencies": {
         "chai": "~=1.9.1",
@@ -23,11 +24,8 @@
         "url": "https://github.com/oleksiyk/zk/issues"
     },
     "scripts": {
-        "test": "make test",
-        "build": "node-gyp configure build",
-        "install": "node-gyp rebuild"
+        "test": "make test"
     },
-    "gypfile": true,
     "repository": {
         "type": "git",
         "url": "git://github.com/oleksiyk/zk.git"
