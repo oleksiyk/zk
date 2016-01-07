@@ -7,32 +7,29 @@
         "email": "oleksiyk@gmail.com"
     },
     "keywords": ["zookeeper", "client"],
-    "version": "0.0.8",
+    "version": "0.0.9",
     "main": "./index.js",
     "dependencies": {
-        "bluebird": "~=1.2.x",
-        "lodash": "~=2.4.1"
+        "bluebird": "~=3.x.x",
+        "lodash": "~=3.x.x",
+        "zookeeper": "=3.4.7-1"
     },
     "devDependencies": {
-        "chai": "~=1.9.1",
-        "sinon-chai": "~=2.5.0",
-        "chai-as-promised": "~=4.1.1",
-        "mocha": "~=1.18.2"
+        "chai": "~=3.4.1",
+        "sinon-chai": "~=2.8.0",
+        "chai-as-promised": "~=5.1.0",
+        "mocha": "~=2.3.4"
     },
     "bugs": {
         "url": "https://github.com/oleksiyk/zk/issues"
     },
     "scripts": {
-        "test": "make test",
-        "build": "node-gyp configure build",
-        "install": "node-gyp rebuild"
+        "test": "make test"
     },
-    "gypfile": true,
     "repository": {
         "type": "git",
         "url": "git://github.com/oleksiyk/zk.git"
     },
-    "readme": "Zookeeper client library for Node",
     "readmeFilename": "README.md",
     "license": "MIT"
 }
