@@ -11,14 +11,17 @@
     "main": "./index.js",
     "dependencies": {
         "bluebird": "~=3.x.x",
-        "lodash": "~=3.x.x",
+        "lodash": "^4.1.0",
         "zookeeper": "=3.4.7-1"
     },
     "devDependencies": {
+        "mocha": "~=2.3.4",
         "chai": "~=3.4.1",
         "sinon-chai": "~=2.8.0",
         "chai-as-promised": "~=5.1.0",
-        "mocha": "~=2.3.4"
+        "eslint": "^1.10.3",
+        "eslint-config-airbnb": "^3.1.0",
+        "istanbul": "^0.4.2"
     },
     "bugs": {
         "url": "https://github.com/oleksiyk/zk/issues"

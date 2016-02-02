@@ -1,15 +1,14 @@
-"use strict";
+'use strict';
 
 /* global describe, it, before, after */
 
 var Zookeeper = require('../index');
 var ZkError = Zookeeper.Error;
 
-describe('Simple', function() {
-
+describe('Simple', function () {
     var zk, path;
 
-    before(function() {
+    before(function () {
         zk = new Zookeeper({
             hostname: '127.0.0.1',
             port: 2181
@@ -18,23 +17,23 @@ describe('Simple', function() {
         return zk.connect();
     });
 
-    after(function() {
+    after(function () {
         return zk.close();
     });
 
-    it('#client_id', function() {
+    it('#client_id', function () {
         zk.should.have.property('client_id').that.is.a('string');
     });
 
-    it('#create()', function() {
-        return zk.create('/test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL).then(function(_path) {
+    it('#create()', function () {
+        return zk.create('/test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL).then(function (_path) {
             path = _path;
             path.should.be.a('string').and.contain('/test-node-');
         });
     });
 
-    it('#set()', function() {
-        return zk.set(path, 'value2', -1).then(function(reply) {
+    it('#set()', function () {
+        return zk.set(path, 'value2', -1).then(function (reply) {
             reply.should.be.an('object').and.have.property('stat');
             reply.stat.should.be.an('object');
             reply.stat.should.have.property('czxid');
@@ -51,8 +50,8 @@ describe('Simple', function() {
         });
     });
 
-    it('#get()', function() {
-        return zk.get(path).then(function(reply) {
+    it('#get()', function () {
+        return zk.get(path).then(function (reply) {
             reply.should.be.an('object');
             reply.should.have.property('stat').that.is.an('object');
             reply.should.have.property('data');
@@ -60,27 +59,27 @@ describe('Simple', function() {
         });
     });
 
-    it('#exists()', function() {
-        return zk.exists(path).then(function(reply) {
+    it('#exists()', function () {
+        return zk.exists(path).then(function (reply) {
             reply.should.be.an('object');
             reply.should.have.property('stat').that.is.an('object');
         });
     });
 
-    describe('errors', function() {
-        it('#get()', function() {
+    describe('errors', function () {
+        it('#get()', function () {
             return zk.get('/abracadabra')
-            .then(function() {
+            .then(function () {
                 throw new Error('should be rejected');
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 err.should.be.instanceOf(ZkError);
                 err.code.should.be.eql(ZkError.ZNONODE);
             });
         });
 
-        it('#exists()', function() {
-            return zk.exists('/abracadabra').then(function(reply) {
+        it('#exists()', function () {
+            return zk.exists('/abracadabra').then(function (reply) {
                 reply.should.have.property('stat').that.is.eql(null);
             });
         });

@@ -1,22 +1,21 @@
-"use strict";
+'use strict';
 
 /* global describe, it, before, after */
 
 var Zookeeper = require('../index');
 var Promise = require('bluebird');
 
-describe('Children', function() {
-
+describe('Children', function () {
     var zk, path;
 
-    before(function() {
+    before(function () {
         zk = new Zookeeper({
             hostname: '127.0.0.1',
             port: 2181
         });
 
-        return zk.connect().then(function() {
-            return zk.create('/test-parent-node-', 'value', Zookeeper.ZOO_SEQUENCE).then(function(_path) {
+        return zk.connect().then(function () {
+            return zk.create('/test-parent-node-', 'value', Zookeeper.ZOO_SEQUENCE).then(function (_path) {
                 path = _path;
                 return Promise.all([
                     zk.create(path + '/' + 'test-node-', 'value', Zookeeper.ZOO_SEQUENCE | Zookeeper.ZOO_EPHEMERAL),
@@ -26,12 +25,12 @@ describe('Children', function() {
         });
     });
 
-    after(function() {
+    after(function () {
         return zk.close();
     });
 
-    it('#getChildren() should return children list', function() {
-        return zk.getChildren(path).then(function(reply) {
+    it('#getChildren() should return children list', function () {
+        return zk.getChildren(path).then(function (reply) {
             reply.should.be.an('object');
             reply.should.have.property('children').that.is.an('array');
             reply.children.should.have.length(2);
@@ -40,8 +39,8 @@ describe('Children', function() {
         });
     });
 
-    it('#getChildren2() should return children list and node stat', function() {
-        return zk.getChildren2(path).then(function(reply) {
+    it('#getChildren2() should return children list and node stat', function () {
+        return zk.getChildren2(path).then(function (reply) {
             reply.should.be.an('object');
             reply.should.have.property('children').that.is.an('array');
             reply.children.should.have.length(2);
@@ -63,5 +62,4 @@ describe('Children', function() {
             reply.stat.should.have.property('pzxid');
         });
     });
-
 });
