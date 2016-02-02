@@ -14,7 +14,7 @@ lint:
 
 # Check coverage levels
 coverage:
-	@$(ISTANBUL) check-coverage --statement 85 --branch 70 --function 85
+	@$(ISTANBUL) check-coverage --statement 45 --branch 45 --function 45
 
 # Clean up
 clean: clean-cov
