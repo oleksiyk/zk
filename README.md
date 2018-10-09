@@ -1,6 +1,9 @@
 # Zk
 
-[![Build Status](https://travis-ci.org/oleksiyk/zk.png)](https://travis-ci.org/oleksiyk/zk)
+[![Build Status][badge-travis]][travis]
+[![david Dependencies][badge-david-deps]][david-deps]
+[![david Dev Dependencies][badge-david-dev-deps]][david-dev-deps]
+[![license][badge-license]][license]
 
 Zk is a [promised](https://github.com/petkaantonov/bluebird) based [Zookeeper](http://zookeeper.apache.org) client library for Node.
 It uses the fork of C binding from [node-zookeeper](https://github.com/yfinkelstein/node-zookeeper) and makes it easier to use.
@@ -94,30 +97,13 @@ var promise = lock.lock(function(){
 
 Function passed to `lock()` should return a promise. That promise will be the return value of `lock()` call
 
-
-# License (MIT)
-
-Copyright (c) 2014
- Oleksiy Krivoshey.
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
+[badge-license]: https://img.shields.io/badge/License-MIT-green.svg
+[license]: https://github.com/oleksiyk/zk/blob/master/LICENSE
+[badge-travis]: https://api.travis-ci.org/oleksiyk/zk.svg?branch=master
+[travis]: https://travis-ci.org/oleksiyk/zk
+[badge-coverage]: https://codeclimate.com/github/oleksiyk/zk/badges/coverage.svg
+[coverage]: https://codeclimate.com/github/oleksiyk/zk/coverage
+[badge-david-deps]: https://david-dm.org/oleksiyk/zk.svg
+[david-deps]: https://david-dm.org/oleksiyk/zk
+[badge-david-dev-deps]: https://david-dm.org/oleksiyk/zk/dev-status.svg
+[david-dev-deps]: https://david-dm.org/oleksiyk/zk#info=devDependencies
